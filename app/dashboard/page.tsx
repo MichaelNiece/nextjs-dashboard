@@ -9,14 +9,14 @@ import {
 } from '@/app/lib/data';
 
 export default async function Page() {
-  const revenue = await fetchRevenue();
-  const latestInvoices = await fetchLatestInvoices();
+  const revenue = await fetchRevenue(); // wait for any prior function call to finish
+  const latestInvoices = await fetchLatestInvoices(); // wait for fetchRevenue() to finish
   const {
     numberOfInvoices,
     numberOfCustomers,
     totalPaidInvoices,
     totalPendingInvoices,
-  } = await fetchCardData();
+  } = await fetchCardData(); // wait for fetchLatestInvoices() to finish
 
   return (
     <main>
